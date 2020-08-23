@@ -1,0 +1,30 @@
+{
+  "name": "oxyz-express",
+  "version": "1.0.0",
+  "description": "Development Express server for simple html sites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "oxyz",
+    "browser-sync",
+    "express",
+    "server",
+    "sass",
+    "pug"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/OXAYAZA/oxyz-express.git"
+  },
+  "author": "OXAYAZA",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "2.26.7",
+    "express": "4.17.1",
+    "gulp": "4.0.2",
+    "pug": "2.0.4",
+    "node-sass": "4.13.1"
+  }
+}
