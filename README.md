@@ -27,7 +27,7 @@ server({
       [ 'dev' ]                   // Путь запроса и путь к папке проекта
     ]
   },
-  browserSync: {                  // Настройки browsersync (см. npmjs.com/package/browser-sync)
+  browserSync: {                  // Настройки browsersync (см. https://browsersync.io/docs/options)
     port: 8000,
     proxy: 'localhost:3000',
     open: false,
@@ -42,14 +42,14 @@ server({
   },
   watcher: {                      // Настройки gulp-обозревателя для слежения за изменениями файлов
     enable: true,                 // Включен или выключен
-    globs: [ 'dev/**/*.js' ]      // Массив выборки файлов для слежения (см. npmjs.com/package/glob)
+    globs: [ 'dev/**/*.js' ]      // Массив выборки файлов для слежения (см. https://www.npmjs.com/package/glob)
   },
   pug: {                          // Настройки шаблонизатора pug
     enable: true,                 // Включен или выключен
     index: 'index',               // Имя (без расширения) начальнаой страницы
     root: 'dev/components/page',  // Корневая папка для поиска файлов страниц
-    globs: [ 'dev/**/*.pug' ],    // Массив выборки файлов для слежения (см. npmjs.com/package/glob)
-    options: {                    // Параметры шаблонизатора, не все параметры применимы (см. pugjs.org/api/reference.html)
+    globs: [ 'dev/**/*.pug' ],    // Массив выборки файлов для слежения (см. https://www.npmjs.com/package/glob)
+    options: {                    // Параметры шаблонизатора, не все параметры применимы (см. https://pugjs.org/api/reference.html)
       doctype: 'html',
       pretty: true,
       self: true
@@ -58,10 +58,11 @@ server({
   sass: {                         // Настройки препроцессора sass
     enable: true,                 // Включен или выключен
     root: 'dev/components',       // Корневая папка для поиска файлов стилей
-    globs: [ 'dev/**/*.scss' ],   // Массив выборки файлов для слежения (см. npmjs.com/package/glob)
-    options: {                    // Параметры препроцессора, не все параметры применимы (см. github.com/sass/node-sass)
+    globs: [ 'dev/**/*.scss' ],   // Массив выборки файлов для слежения (см. https://www.npmjs.com/package/glob)
+    options: {                    // Параметры препроцессора, не все параметры применимы (см. https://github.com/sass/node-sass#options)
       outputStyle: 'expanded'
     }
-  }
+  },
+  cb: null                        // Колбек для дополнительных обработчиков зпросов, принимает параметр app, возвращать ничего не нужно  (см. http://expressjs.com/en/4x/api.html#app.get.method)
 }
 ```

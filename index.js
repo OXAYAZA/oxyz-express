@@ -114,7 +114,8 @@ function expressServer ( opts ) {
 			options: {
 				outputStyle: 'expanded'
 			}
-		}
+		},
+		cb: null
 	};
 
 	// Слияние параметров по умолчанию и полученных
@@ -160,6 +161,9 @@ function expressServer ( opts ) {
 			res.end( content, 'binary' );
 		});
 	}
+
+	// Custom handlers and other
+	if ( params.cb instanceof Function ) params.cb( app );
 
 	// Static files
 	if ( params.express && params.express.static && params.express.static.length ) {
