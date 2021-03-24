@@ -3,7 +3,7 @@ const
 	browserSync = require( 'browser-sync' ),
 	express     = require( 'express' ),
 	pug         = require( 'pug' ),
-	sass        = require( 'node-sass' ),
+	sass        = require( 'sass' ),
 	path        = require( 'path' ),
 	fs          = require( 'fs' );
 
