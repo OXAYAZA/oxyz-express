@@ -1,6 +1,6 @@
 {
   "name": "oxyz-express",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Development Express server for simple html sites",
   "main": "index.js",
   "scripts": {
