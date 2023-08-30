@@ -21,10 +21,12 @@
   "author": "OXAYAZA",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "2.26.7",
     "express": "4.17.1",
     "gulp": "4.0.2",
     "pug": "2.0.4",
-    "sass": "1.32.8"
+    "sass": "1.32.8",
+    "browser-sync": "2.26.7",
+    "browser-sync-client": "2.26.6",
+    "browser-sync-ui": "2.26.4"
   }
 }
