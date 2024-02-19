@@ -9,10 +9,10 @@ const
 
 
 /**
- * Поиск файла по имени
- * @param {string} name - имя файла (с расширением)
- * @param {string} base - начальный путь поиска
- * @return {string} - полный путь к найденному файлу
+ * Search file by name
+ * @param {string} name - file name (with extension)
+ * @param {string} base - initial search path
+ * @return {string} - full path to the found file
  */
 function search ( name, base ) {
 	let result = null;
@@ -36,19 +36,19 @@ function search ( name, base ) {
 }
 
 /**
- * Получение тэга объекта (для точного определения типа)
- * @param {*} data - любой тип данных
- * @returns {string} - тэг объекта
+ * Getting the object tag (to determine the exact type)
+ * @param {*} data - any data type
+ * @returns {string} - object tag
  */
 function objectTag ( data ) {
 	return Object.prototype.toString.call( data ).slice( 8, -1 );
 }
 
 /**
- * Слияние объектов, модифицирует исходный
- * @param {object} source - исходный объект
- * @param {object} merged - слияемый объект
- * @return {object} - конечный объект
+ * Objects merging, modifies the original object
+ * @param {object} source - the source object
+ * @param {object} merged - the object to be merged
+ * @return {object} - the final object
  */
 function merge( source, merged ) {
 	for ( let key in merged ) {
@@ -64,13 +64,13 @@ function merge( source, merged ) {
 }
 
 /**
- * Запуск express и browser-sync
- * @param {object} opts - параметры сервера
+ * Start express
+ * @param {object} opts - server parameters
  */
 function expressServer ( opts ) {
 	const app = express();
 
-	// Параметры по умолчанию
+	// Default parameters
 	let params = {
 		express: {
 			root: './dev/',
@@ -80,6 +80,7 @@ function expressServer ( opts ) {
 			]
 		},
 		browserSync: {
+			enable: false,
 			port: 8000,
 			proxy: 'localhost:3000',
 			open: false,
@@ -93,11 +94,11 @@ function expressServer ( opts ) {
 			}
 		},
 		watcher: {
-			enable: true,
+			enable: false,
 			globs: [ 'dev/**/*.js' ]
 		},
 		pug: {
-			enable: true,
+			enable: false,
 			index: 'index',
 			root: 'dev/components/page',
 			globs: [ 'dev/**/*.pug' ],
@@ -108,7 +109,7 @@ function expressServer ( opts ) {
 			}
 		},
 		sass: {
-			enable: true,
+			enable: false,
 			root: 'dev/components',
 			globs: [ 'dev/**/*.scss' ],
 			options: {
@@ -118,7 +119,7 @@ function expressServer ( opts ) {
 		cb: null
 	};
 
-	// Слияние параметров по умолчанию и полученных
+	// Merging default and derived parameters
 	if ( opts instanceof Object ) merge( params, opts );
 
 	// Sets directory name
@@ -181,25 +182,25 @@ function expressServer ( opts ) {
 	// Listens to server
 	app.listen( params.express.port, function () {
 		console.log( `[Express] Server listening on port ${params.express.port}` );
-		browserSync( params.browserSync );
+		if ( params.browserSync && params.browserSync.enable ) browserSync( params.browserSync );
 	});
 
 	// Pug watcher
-	if ( params.pug && params.pug.enable && params.pug.globs && params.pug.globs.length ) {
+	if ( params.browserSync && params.browserSync.enable && params.pug && params.pug.enable && params.pug.globs && params.pug.globs.length ) {
 		gulp.watch( params.pug.globs ).on( 'change', function() {
 			browserSync.reload();
 		});
 	}
 
 	// Sass watcher
-	if ( params.sass && params.sass.enable && params.sass.globs && params.sass.globs.length ) {
+	if ( params.browserSync && params.browserSync.enable && params.sass && params.sass.enable && params.sass.globs && params.sass.globs.length ) {
 		gulp.watch( params.sass.globs ).on( 'change', function() {
 			browserSync.reload( '*.css' );
 		});
 	}
 
 	// Other files watcher
-	if ( params.watcher && params.watcher.enable && params.watcher.globs && params.watcher.globs.length ) {
+	if ( params.browserSync && params.browserSync.enable && params.watcher && params.watcher.enable && params.watcher.globs && params.watcher.globs.length ) {
 		gulp.watch( params.watcher.globs ).on( 'change', function() {
 			browserSync.reload();
 		});

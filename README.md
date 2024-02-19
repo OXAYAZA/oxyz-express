@@ -28,6 +28,7 @@ Below you can find the default parameter object.
     ]
   },
   browserSync: {                  // browsersync settings (see. https://browsersync.io/docs/options)
+    enable: false,                // Enabled or disabled
     port: 8000,
     proxy: 'localhost:3000',
     open: false,
@@ -41,11 +42,11 @@ Below you can find the default parameter object.
     }
   },
   watcher: {                      // gulp-watcher settings to track the file changes
-    enable: true,                 // Enabled or disabled
+    enable: false,                // Enabled or disabled
     globs: [ 'dev/**/*.js' ]      // File selection array for tracking (see. https://www.npmjs.com/package/glob)
   },
   pug: {                          // Settings of pug template engine
-    enable: true,                 // Enabled or disabled
+    enable: false,                // Enabled or disabled
     index: 'index',               // Index page title (without extension)
     root: 'dev/components/page',  // Root folder for the page search
     globs: [ 'dev/**/*.pug' ],    // File selection array for tracking (see. https://www.npmjs.com/package/glob)
@@ -56,7 +57,7 @@ Below you can find the default parameter object.
     }
   },
   sass: {                         // Sass preprocessor settings
-    enable: true,                 // Enabled or disabled
+    enable: false,                // Enabled or disabled
     root: 'dev/components',       // Root folder for the stylesheet search
     globs: [ 'dev/**/*.scss' ],   // File selection array for tracking (see. https://www.npmjs.com/package/glob)
     options: {                    // Preprocessor parameters, not all options can be applied (see. https://github.com/sass/node-sass#options)
